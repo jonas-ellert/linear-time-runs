@@ -30,6 +30,12 @@
 
 namespace linear_time_runs {
 
+/**
+ * Class for a single run.
+ *
+ * @tparam index_type the integer type used to store the position, length and
+ *     period of the run. The algorithm defaults to index_type = uint32_t
+ */
 template<typename index_type>
 struct run_type {
   index_type start;
@@ -39,10 +45,30 @@ struct run_type {
 
 namespace internal {
 
+/**
+ * Computes either all increasing runs, or all decreasing runs, and appends them
+ * to the given vector of runs.
+ *
+ * @tparam increasing indicates whether to compute increasing or decreasing runs
+ * @tparam
+ */
+
+/**
+ * Computes either all increasing runs, or all decreasing runs, and appends them
+ * to the given vector of runs. *
+ *
+ * @tparam increasing indicates whether to compute increasing or decreasing runs
+ * @tparam value_type the type of a text symbol; can be deduced automatically
+ * @tparam index_type the integer type used to store the position, length and period of runs; can be deduced automatically
+ * @param text pointer to the first character of the text, which has to be stored in a consecutive memory area
+ * @param n the length of the text; has to be less than std::numeric_limits<index_type>::max()
+ * @param result vector of runs to which the newly computed runs will be appended
+ */
 template<bool increasing, typename value_type, typename index_type>
 void unidirectional_runs(value_type const *const text, size_t const n,
                          std::vector <run_type<index_type>> &result) {
 
+  // lexicographically compare two suffixes (given their R-LCE)
   auto compare = [&text](index_type const &i, index_type const &j,
                          index_type const &lce) {
       if constexpr (increasing) {
@@ -52,6 +78,7 @@ void unidirectional_runs(value_type const *const text, size_t const n,
       }
   };
 
+  // naively compute R-LCE (skip known prefix)
   auto get_rlce = [&](index_type const &i, index_type const &j,
                       index_type lce = 0) {
       while (text[i + lce] == text[j + lce])
@@ -59,12 +86,14 @@ void unidirectional_runs(value_type const *const text, size_t const n,
       return lce;
   };
 
+  // naively compute L-LCE (skip known prefix)
   auto get_llce = [&](index_type const &i, index_type const &j,
                       index_type llce = 0) {
       while (text[i - llce] == text[j - llce])
         ++llce;
       return llce;
   };
+
 
   struct distance_edge_type {
     index_type distance, lce;
@@ -229,6 +258,16 @@ void unidirectional_runs(value_type const *const text, size_t const n,
 
 } // namespace internal
 
+/**
+ * Computes all runs of a given text. The text has to start and end with a
+ * sentinel character that is smaller than all other characters.
+ *
+ * @tparam value_type the type of a text symbol; can be deduced automatically
+ * @tparam index_type the integer type used to store the position, length and period of runs; defaults to uint32_t
+ * @param text pointer to the first character of the text, which has to be stored in a consecutive memory area
+ * @param n the length of the text; has to be less than std::numeric_limits<index_type>::max()
+ * @return vector containing all runs sorted by start position and period length
+ */
 template<typename value_type, typename index_type = uint32_t>
 auto compute_all_runs(value_type const *const text, size_t const n) {
   using run_t = run_type<index_type>;
