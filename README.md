@@ -8,7 +8,7 @@ The algorithm requires an integer alphabet that can be sorted in linear time.
 
 In this repository we provide an improved ``C++`` implementation of the runs algorithm that achieves ``O(n)`` time even for *general ordered alphabets*.
 A full description of the algorithm has been submitted to ICALP 2021. 
-We may also provide a pre-print version on arXiv soon (check this page for updates).
+A pre-print version is available on arXiv: https://arxiv.org/abs/2102.08670.
 **The documentation of the code has not been completed yet.**
 
 ### Using the algorithm
@@ -47,5 +47,6 @@ If you use our implementation in an academic setting, we kindly ask you to cite 
 ```
 Linear Time Runs over General Ordered Alphabets.
 Jonas Ellert and Johannes Fischer.
+CoRR abs/2102.08670 (https://arxiv.org/abs/2102.08670), 2021.
 Submitted to ICALP 2021.
 ```
