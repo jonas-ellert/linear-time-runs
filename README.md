@@ -42,11 +42,11 @@ If you have any questions or problems feel free to contact us.
 
 This software is provided under the MIT license. For more information see the LICENSE file.
 
-If you use our implementation in an academic setting, we kindly ask you to cite the following paper (this will be updated once a conference or pre-print version has been published):
+If you use our implementation in an academic setting, we kindly ask you to cite the following paper (this will be updated once a conference version has been published):
 
 ```
 Linear Time Runs over General Ordered Alphabets.
 Jonas Ellert and Johannes Fischer.
 CoRR abs/2102.08670 (https://arxiv.org/abs/2102.08670), 2021.
-Submitted to ICALP 2021.
+Accepted at ICALP 2021.
 ```
