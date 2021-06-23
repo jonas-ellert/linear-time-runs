@@ -1,0 +1,21 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "license": "https://spdx.org/licenses/MIT",
+    "datePublished": "2020-08-28",
+    "name": "Linear Time Runs",
+    "description": "A simple library to compute all runs in a string over a general ordered alphabet.",
+    "applicationCategory": "String Algorithms",
+    "programmingLanguage": [
+        "C++"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "@id": "https://orcid.org/0000-0003-3305-6185",
+            "givenName": "Jonas",
+            "familyName": "Ellert",
+            "email": "jonas.ellert@tu-dortmund.de"
+        }
+    ]
+}
